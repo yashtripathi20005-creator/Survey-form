@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="survey-card">
+            <h1>📋 Customer Satisfaction Survey</h1>
+            <p class="subtitle">We value your feedback! Please take a moment to complete this survey.</p>
+            
+            <form id="surveyForm" action="/submit" method="POST">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2>Personal Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120" required>
+                    </div>
+                </div>
+                
+                <!-- Survey Questions -->
+                <div class="form-section">
+                    <h2>Survey Questions</h2>
+                    
+                    <div class="form-group">
+                        <label for="satisfaction">How satisfied are you with our service? *</label>
+                        <select id="satisfaction" name="satisfaction" required>
+                            <option value="">Select an option</option>
+                            <option value="very_satisfied">Very Satisfied</option>
+                            <option value="satisfied">Satisfied</option>
+                            <option value="neutral">Neutral</option>
+                            <option value="dissatisfied">Dissatisfied</option>
+                            <option value="very_dissatisfied">Very Dissatisfied</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recommend">Would you recommend us to others?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="recommend" value="yes">
+                                Yes
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="recommend" value="no">
+                                No
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="recommend" value="maybe">
+                                Maybe
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>What are you interested in? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="technology">
+                                Technology
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="design">
+                                Design
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="marketing">
+                                Marketing
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="customer_service">
+                                Customer Service
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="interests" value="product_quality">
+                                Product Quality
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback">Additional Feedback</label>
+                        <textarea id="feedback" name="feedback" rows="5" placeholder="Tell us more about your experience..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Submit Survey</button>
+                    <button type="reset" class="btn-reset">Clear All</button>
+                </div>
+            </form>
+            
+            <div id="messageContainer" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
